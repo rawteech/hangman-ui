@@ -8,23 +8,38 @@ const initialState = {
 
 export function game(state = initialState, action) {
     switch(action.type) {
-        case gameConstants.GET_GAME_REQUEST:
+        case gameConstants.CREATE_GAME_REQUEST:
             return {
                 ...state,
                 loading: true
             };
 
-        case gameConstants.GET_GAME_SUCCESS:
+        case gameConstants.CREATE_GAME_SUCCESS:
             return {
                 ...state,
                 data: action.payload,
                 loading: false
             }
 
-        case gameConstants.GET_GAME_FAILURE:
+        case gameConstants.CREATE_GAME_FAILURE:
             return {
                 ...state,
-                error: action.error
+                error: action.error,
+                data: action.payload
+            };
+
+        case gameConstants.PLAY_GAME_SUCCESS:
+            return {
+                ...state,
+                data: action.payload,
+                loading: false
+            };
+
+        case gameConstants.PLAY_GAME_FAILURE:
+            return {
+                ...state,
+                error: action.error,
+                data: action.payload
             };
 
         default:

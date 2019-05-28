@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { login, logout } from "../_actions";
+import { login } from "../_actions";
 import { LOGIN_SUCCESS } from "../_constants";
 import { history } from "../_helpers";
 
@@ -58,7 +58,7 @@ class LoginPage extends React.Component {
             <div>
                 <main className={classes.main}>
                     <CssBaseline />
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.loginPaper}>
                         <Avatar className={classes.avatar}>
                             <LockOutlinedIcon />
                         </Avatar>
