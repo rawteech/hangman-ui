@@ -35,15 +35,8 @@ export const styles = (theme) => ({
     },
     // Homepage
     home: {
-        width: 'auto',
-        display: 'block',
-        marginLeft: theme.spacing.unit * 2,
-        marginRight: theme.spacing.unit * 2,
-        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-        width: 900,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        },
+        marginLeft: theme.spacing.unit * 3,
+        marginRight: theme.spacing.unit * 3,
     },
     homePaper: {
         marginTop: theme.spacing.unit * 8,
@@ -51,6 +44,15 @@ export const styles = (theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-    }
+    },
+    homePaper2: {
+        marginTop: theme.spacing.unit * 8,
+        display: 'flex',
+        flexDirection: 'column',
+        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+    },
+    root: {
+        flexGrow: 1,
+    },
 
 });

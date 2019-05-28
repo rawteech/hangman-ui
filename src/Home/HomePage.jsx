@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { gameActions } from "../_actions";
+import { history } from "../_helpers";
 
 // Material design stuff
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +13,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 
 class HomePage extends React.Component {
@@ -59,42 +61,86 @@ class HomePage extends React.Component {
             return (
                 <React.Fragment>
                     <CssBaseline />
-                    <div>
+                    <div className={classes.root}>
                         <main className={classes.home}>
-                            <Paper className={classes.homePaper}>
-                                <Typography variant="h2" component="h2">
-                                    Hangman Game
-                                </Typography>
-                                <Typography variant="h3" component="h3">
-                                    [{game.data.spaces}]
-                                </Typography>
-                                <Typography variant="h5" component="p">
-                                    Guess a word, and submit to check whether
-                                    you are correct
-                                </Typography>
-                                <form className={classes.form} onSubmit={this.handleSubmit}>
-                                    <FormControl margin="normal" required fullWidth>
-                                        <InputLabel htmlFor="letter">Input Letter</InputLabel>
-                                        <Input
-                                            type="text"
-                                            id="letter"
-                                            name="letter"
-                                            autoComplete="letter"
-                                            value={this.state.letter}
-                                            autoFocus
-                                            onChange={this.handleChange}
-                                        />
-                                    </FormControl>
-                                    <Button
-                                        type="submit"
-                                        variant="contained"
-                                        color="secondary"
-                                        className={classes.submit}
-                                    >
-                                        Guess
-                                    </Button>
-                                </form>
-                            </Paper>
+                            <Grid container justify="center" spacing={3}>
+                                <Grid item xs={8}>
+                                    <Paper className={classes.homePaper}>
+                                        <Typography variant="h2" component="h2">
+                                            Hangman Game
+                                        </Typography>
+                                        <br/>
+                                        <Typography variant="h3" component="h3">
+                                            [{game.data.spaces}]
+                                        </Typography>
+                                        <br/>
+                                        <Typography variant="h5" component="p">
+                                            Guess a word, and submit to check whether
+                                            you are correct
+                                        </Typography>
+                                        <form className={classes.form}>
+                                            <FormControl margin="normal" required fullWidth>
+                                                <InputLabel htmlFor="letter">Input Letter</InputLabel>
+                                                <Input
+                                                    type="text"
+                                                    id="letter"
+                                                    name="letter"
+                                                    autoComplete="letter"
+                                                    value={this.state.letter}
+                                                    autoFocus
+                                                    onChange={this.handleChange}
+                                                />
+                                            </FormControl>
+                                        </form>
+                                        <Button
+                                                variant="contained"
+                                                color="secondary"
+                                                onClick={this.handleSubmit}
+                                                className={classes.submit}
+                                            >
+                                                Guess Letter
+                                        </Button>
+                                    </Paper>
+                                </Grid>
+                                <Grid item xs={4}>
+                                    <Paper className={classes.homePaper2}>
+                                        <Typography variant="h5" component="p">
+                                            Chances Left: <strong>{game.data.chances}</strong>
+                                        </Typography>
+                                        <Typography variant="h5" component="p">
+                                            High Scores: <strong>{game.data.score}</strong>
+                                        </Typography>
+                                        <Typography component="p">
+                                            Player: {game.data.player}
+                                        </Typography>
+                                        <Typography component="p">
+                                            Game ID: {game.data.game_id}
+                                        </Typography>
+                                        <Grid container spacing={3}>
+                                            <Grid item xs={6}>
+                                                <Button
+                                                    variant="contained"
+                                                    color="primary"
+                                                    onClick={() => this.props.startGame()}
+                                                    className={classes.submit}
+                                                >
+                                                    New Game
+                                                </Button>
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <Button
+                                                    color="primary"
+                                                    onClick={() => history.push('/login')}
+                                                    className={classes.submit}
+                                                >
+                                                    Signout
+                                                </Button>
+                                            </Grid>
+                                        </Grid>
+
+                                    </Paper>
+                                </Grid>
+                            </Grid>
                         </main>
                     </div>
                 </React.Fragment>
