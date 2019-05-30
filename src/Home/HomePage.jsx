@@ -78,7 +78,7 @@ class HomePage extends React.Component {
                                             Guess a word, and submit to check whether
                                             you are correct
                                         </Typography>
-                                        <form className={classes.form}>
+                                        <form className={classes.form} onSubmit={this.handleSubmit}>
                                             <FormControl margin="normal" required fullWidth>
                                                 <InputLabel htmlFor="letter">Input Letter</InputLabel>
                                                 <Input
